@@ -1,0 +1,152 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.tble.teste</groupId>
+	<artifactId>novo</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>novo-ear</module>
+		<module>novo-web</module>
+		<module>novo-ejb</module>
+	</modules>
+	
+		<parent>
+		<groupId>br.com.tble</groupId>
+		<artifactId>tble</artifactId>
+		<version>2.0.0-SNAPSHOT</version>		
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<os.entrega>AT-438</os.entrega>
+		
+		<!-- Versoes do Framework -->
+		<tble-commons.version>2.0.0-SNAPSHOT</tble-commons.version>
+		<tble-ejb-utils.version>2.0.0-SNAPSHOT</tble-ejb-utils.version>
+		<tble-reports.version>2.0.0-SNAPSHOT</tble-reports.version>
+		<tble-security.version>2.0.0-SNAPSHOT</tble-security.version>
+		<tble-templates.version>2.0.0-SNAPSHOT</tble-templates.version>
+		<tble-template-unificado.version>2.0.0-SNAPSHOT</tble-template-unificado.version>
+		<tble-test.version>2.0.0-SNAPSHOT</tble-test.version>
+		<tble-web.version>2.0.0-SNAPSHOT</tble-web.version>
+		<tble-web-utils.version>2.0.0-SNAPSHOT</tble-web-utils.version>
+		<tble-api-ejb.version>2.0.0-SNAPSHOT</tble-api-ejb.version>
+		<tble-api-maximo-ejb.version>2.0.0-SNAPSHOT</tble-api-maximo-ejb.version>
+		<jscty-jobs-ejb.version>2.0.0-SNAPSHOT</jscty-jobs-ejb.version>
+		<tble-aspect.version>1.0.0-SNAPSHOT</tble-aspect.version>
+	</properties>
+	
+	
+<dependencyManagement>
+		<dependencies>
+			
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-ejb-utils</artifactId>
+				<version>${tble-ejb-utils.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-reports</artifactId>
+				<version>${tble-reports.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-security</artifactId>
+				<version>${tble-security.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble.web</groupId>
+				<artifactId>tble-templates</artifactId>
+				<version>${tble-templates.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>br.com.tble.web</groupId>
+				<artifactId>tble-template-unificado</artifactId>
+				<version>${tble-template-unificado.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-test</artifactId>
+				<version>${tble-test.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-web</artifactId>
+				<version>${tble-web.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-web-utils</artifactId>
+				<version>${tble-web-utils.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-api-ejb</artifactId>
+				<version>${tble-api-ejb.version}</version>
+				<type>ejb-client</type>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>tble-api-maximo-ejb</artifactId>
+				<version>${tble-api-maximo-ejb.version}</version>
+				<type>ejb-client</type>
+			</dependency>
+
+			<dependency>
+				<groupId>br.com.tble</groupId>
+				<artifactId>jscty-jobs-ejb</artifactId>
+				<version>${jscty-jobs-ejb.version}</version>
+				<type>ejb-client</type>
+			</dependency>
+
+			<!-- Lib do Primefaces -->
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>${version.primefaces}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>1.4</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.8</version>
+				<dependencies>
+					<dependency>
+						<groupId>br.com.tble</groupId>
+						<artifactId>tble-aspect</artifactId>
+						<version>${tble-aspect.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>br.com.tble.teste</groupId>
+		<artifactId>novo</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>novo-ejb</artifactId>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>br.com.tble</groupId>
+			<artifactId>tble-api-maximo-ejb</artifactId>
+			<type>ejb-client</type>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble</groupId>
+			<artifactId>tble-reports</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble</groupId>
+			<artifactId>tble-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble</groupId>
+			<artifactId>jscty-jobs-ejb</artifactId>
+			<type>ejb-client</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ibm.tools.target</groupId>
+			<artifactId>was-liberty</artifactId>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<ejbVersion>${version.ejb}</ejbVersion>
+					<generateClient>true</generateClient>
+					<clientExcludes>
+						<clientExclude>br/com/tble/*/entity/**/*</clientExclude>
+						<clientExclude>br/com/tble/*/enumeration/**/*</clientExclude>
+						<clientExclude>**/*Bean.class</clientExclude>
+					</clientExcludes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

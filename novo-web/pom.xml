@@ -1,0 +1,123 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>br.com.tble.teste</groupId>
+		<artifactId>novo</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+
+	<artifactId>novo-web</artifactId>
+	<packaging>war</packaging>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>br.com.tble.teste</groupId>
+			<artifactId>novo-ejb</artifactId>
+			<version>${project.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ibm.tools.target</groupId>
+			<artifactId>was-liberty</artifactId>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble.web</groupId>
+			<artifactId>tble-templates</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble.web</groupId>
+			<artifactId>tble-template-unificado</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble</groupId>
+			<artifactId>tble-web</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.tble</groupId>
+			<artifactId>tble-web-utils</artifactId>
+		</dependency>
+
+		<!-- Lib do Primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+
+<profiles>
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<excludes>
+							<exclude>**/conf.properties</exclude>
+						</excludes>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+		<profile>
+			<id>development</id>
+			<properties>
+				<login.desenv.SISTEMA>BLANK</login.desenv.SISTEMA>
+				<login.desenv.EMPRESA>43</login.desenv.EMPRESA>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<packagingExcludes>
+								blank/**
+							</packagingExcludes>
+							<webResources>
+								<resource>
+									<filtering>true</filtering>
+									<directory>src/main/resources/</directory>
+									<includes>
+										<include>**/conf.properties</include>
+									</includes>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
+</project>
