@@ -1,0 +1,8 @@
+*.project
+.settings/
+*.classpath
+novo-ejb/ejbModule/
+*.factorypath
+novo-ear/target/
+novo-ejb/target/
+novo-web/target/

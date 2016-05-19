@@ -31,29 +31,27 @@ public class Livro extends AbstractCrudEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BLK_LIVRO_SEQ")
-	@Column(name = "CD_LIVRO", nullable = false)
+	@Column(name = "CD_LIVRO")
 	private Long id;
 
-	@NotEmpty
-	@Column(name = "NM_LIVRO", nullable = false, length = 500)
+	@Column(name = "NM_LIVRO")
 	private String nome;
 
-	@NotEmpty
-	@Column(name = "DS_TITULO", nullable = false, length = 250, unique = true)
+	@Column(name = "DS_TITULO")
 	private String titulo;
 
-	@Column(name = "NR_IDADE", nullable = false)
+	@Column(name = "NR_IDADE")
 	private Integer idade = 1;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "DT_IMPRESSAO", nullable = false)
+	@Column(name = "DT_IMPRESSAO")
 	private Date dataImpressao;
 
-	@Column(name = "VL_LIVRO", nullable = false)
+	@Column(name = "VL_LIVRO")
 	private Double valor;
 	
 	@ManyToOne
-	@JoinColumn(name= "CD_EDITORA", nullable = false)
+	@JoinColumn(name= "CD_EDITORA")
 	private Editora editora;
 
 	public Livro() {

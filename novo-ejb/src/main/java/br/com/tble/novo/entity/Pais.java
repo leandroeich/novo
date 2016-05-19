@@ -20,11 +20,10 @@ public class Pais extends AbstractCrudEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BLK_PAIS_SEQ")
-	@Column(name = "CD_PAIS", nullable = false)
+	@Column(name = "CD_PAIS")
 	private Long id;
 
-	@NotEmpty
-	@Column(name = "NM_PAIS", nullable = false, length = 250)
+	@Column(name = "NM_PAIS")
 	private String nome;
 
 	public Long getId() {

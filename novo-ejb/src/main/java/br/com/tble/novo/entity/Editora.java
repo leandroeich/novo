@@ -26,19 +26,18 @@ public class Editora extends AbstractCrudEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BLK_EDITORA_SEQ")
-	@Column(name = "CD_EDITORA", nullable = false)
+	@Column(name = "CD_EDITORA")
 	private Long id;
 
-	@NotEmpty
-	@Column(name = "NM_EDITORA", nullable = false, length = 250)
+	@Column(name = "NM_EDITORA")
 	private String nome;
 
 	@ManyToOne
-	@JoinColumn(name= "CD_PAIS", nullable = false)
+	@JoinColumn(name= "CD_PAIS")
 	private Pais pais;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "DT_CADASTRO", nullable = false)
+	@Column(name = "DT_CADASTRO")
 	private Date dataCadastro;
 	
 	public Long getId() {
